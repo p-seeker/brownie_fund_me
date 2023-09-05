@@ -1,0 +1,20 @@
+dependencies:
+  # - <organization/repo>@<version>
+  - smartcontractkit/chainlink-brownie-contracts@1.1.1
+
+compiler:
+  solc:
+    remappings:
+      - '@chainlink=smartcontractkit/chainlink-brownie-contracts@1.1.1'
+
+dotenv: .env
+networks:
+  sepolia:
+    eth_usd_price_feed: '0x694AA1769357215DE4FAC081bf1f309aDC325306'
+    verify: True # for  persistent live NWs like rinkeby/sepolia, we want Etherscan to verify and publish our contract's code
+  development: 
+    verify: False # for development NWs, Etherscan doesn't know about such local chain and cannot verify the contract.
+  ganache-cli:
+    verify: False # @05:41:57; added it for ganache-cli.:).
+wallets:
+  from_key: ${PRIVATE_KEY}
